@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+        <img src="descarga.png" />
+        <div id="contenido">
+
+        </div>
+        <div>
+            <a href="javascript:void(0)" onclick="exhibirLineas()">Exhibir líneas</a> <br />
+            <canvas id="lienzo" width="400" height="300" style="border:1px solid #000000">
+            </canvas>
+        </div>
+        <script async src="script.js"></script>
+        <script>
+            if('serviceWorker' in navigator){
+                navigator.serviceWorker.register('sw.js')
+                .then(
+                    function(registration){
+                        alert('Reg. satisfactorio del sw');
+                        console.log('Reg. satisfactorio del sw en el ámbito: ',
+                                    registration.scope);
+                    }
+                ).catch(
+                    function(err){
+                        alert('El SW no se registró');
+                        console.log('El SW no se registró', err);
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>
